@@ -55,7 +55,7 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
 
     @SuppressLint("Recycle")
     public WordItem query(int position) {
-        String query = "SELECT * FROM" + WORD_LIST_TABLE + " ORDER BY " + KEY_WORD + " ASC " + "LIMIT " + position + ",1";
+        String query = "SELECT * FROM " + WORD_LIST_TABLE + " ORDER BY " + KEY_WORD + " ASC " + "LIMIT " + position + ",1";
         Cursor cursor = null;
         WordItem entry = new WordItem();
         try {

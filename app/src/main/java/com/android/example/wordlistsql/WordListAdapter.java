@@ -17,12 +17,13 @@
 package com.android.example.wordlistsql;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Implements a simple Adapter for a RecyclerView.
@@ -31,7 +32,7 @@ import android.widget.TextView;
 public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordViewHolder> {
 
     /**
-     *  Custom view holder with a text view and two buttons.
+     * Custom view holder with a text view and two buttons.
      */
     class WordViewHolder extends RecyclerView.ViewHolder {
         public final TextView wordItemView;
@@ -41,8 +42,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         public WordViewHolder(View itemView) {
             super(itemView);
             wordItemView = (TextView) itemView.findViewById(R.id.word);
-            delete_button = (Button)itemView.findViewById(R.id.delete_button);
-            edit_button = (Button)itemView.findViewById(R.id.edit_button);
+            delete_button = (Button) itemView.findViewById(R.id.delete_button);
+            edit_button = (Button) itemView.findViewById(R.id.edit_button);
         }
     }
 
@@ -53,10 +54,12 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     private final LayoutInflater mInflater;
     Context mContext;
+    WordListOpenHelper mDB;
 
-    public WordListAdapter(Context context) {
+    public WordListAdapter(Context context, WordListOpenHelper db) {
         mInflater = LayoutInflater.from(context);
         mContext = context;
+        mDB = db;
     }
 
     @Override
@@ -67,7 +70,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     @Override
     public void onBindViewHolder(WordViewHolder holder, int position) {
-        holder.wordItemView.setText("placeholder");
+        WordItem current = mDB.query(position);
+        holder.wordItemView.setText(current.getWord());
     }
 
     @Override
@@ -76,5 +80,3 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         return 10;
     }
 }
-
-
