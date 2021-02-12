@@ -29,6 +29,23 @@
                         "endColumns": "113,97,114,88,106,125,77,76,99,104,95,94,106,101,103,94,101,97,81,101,103,96,109,101,106,156,99,79",
                         "endOffsets": "214,312,427,516,623,749,827,904,1004,1109,1205,1300,1407,1509,1613,1708,1810,1908,1990,2092,2196,2293,2403,2505,2612,2769,2869,2949"
                     }
+                },
+                {
+                    "source": "/Users/hystrix/.gradle/caches/transforms-2/files-2.1/fdd42d596c4f70d37e38036f9f6b5091/wear-1.0.0/res/values-ta/values-ta.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,164",
+                        "endColumns": "108,119",
+                        "endOffsets": "159,279"
+                    },
+                    "to": {
+                        "startLines": "31,32",
+                        "startColumns": "4,4",
+                        "startOffsets": "3055,3164",
+                        "endColumns": "108,119",
+                        "endOffsets": "3159,3279"
+                    }
                 }
             ]
         }

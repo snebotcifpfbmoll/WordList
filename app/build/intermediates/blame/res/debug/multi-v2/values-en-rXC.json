@@ -14,6 +14,23 @@
                     }
                 },
                 {
+                    "source": "/Users/hystrix/.gradle/caches/transforms-2/files-2.1/fdd42d596c4f70d37e38036f9f6b5091/wear-1.0.0/res/values-en-rXC/values-en-rXC.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,264",
+                        "endColumns": "208,218",
+                        "endOffsets": "259,478"
+                    },
+                    "to": {
+                        "startLines": "31,32",
+                        "startColumns": "4,4",
+                        "startOffsets": "5885,6094",
+                        "endColumns": "208,218",
+                        "endOffsets": "6089,6308"
+                    }
+                },
+                {
                     "source": "/Users/hystrix/.gradle/caches/transforms-2/files-2.1/6d11613c3b6a00a9ea456b5609ec43f7/core-1.0.0/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2",

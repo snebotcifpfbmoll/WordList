@@ -14,6 +14,23 @@
                     }
                 },
                 {
+                    "source": "/Users/hystrix/.gradle/caches/transforms-2/files-2.1/fdd42d596c4f70d37e38036f9f6b5091/wear-1.0.0/res/values-vi/values-vi.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,162",
+                        "endColumns": "106,114",
+                        "endOffsets": "157,272"
+                    },
+                    "to": {
+                        "startLines": "31,32",
+                        "startColumns": "4,4",
+                        "startOffsets": "3002,3109",
+                        "endColumns": "106,114",
+                        "endOffsets": "3104,3219"
+                    }
+                },
+                {
                     "source": "/Users/hystrix/.gradle/caches/transforms-2/files-2.1/6d11613c3b6a00a9ea456b5609ec43f7/core-1.0.0/res/values-vi/values-vi.xml",
                     "from": {
                         "startLines": "2",

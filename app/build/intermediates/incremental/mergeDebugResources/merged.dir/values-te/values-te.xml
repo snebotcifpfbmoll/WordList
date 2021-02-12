@@ -29,4 +29,6 @@
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"కుదించండి"</string>
     <string msgid="146198913615257606" name="search_menu_title">"వెతుకు"</string>
     <string msgid="7988687684186075107" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="1837365417701148489" name="ws_action_drawer_content_description">"చర్య డ్రాయర్"</string>
+    <string msgid="7216697245762194759" name="ws_navigation_drawer_content_description">"నావిగేషన్ డ్రాయర్"</string>
 </resources>

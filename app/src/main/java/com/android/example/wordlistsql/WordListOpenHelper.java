@@ -11,11 +11,11 @@ import android.util.Log;
 
 public class WordListOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = WordListOpenHelper.class.getSimpleName();
-    private static final int DATABASE_VERSION = 1;
-    private static final String WORD_LIST_TABLE = "word_entries";
-    private static final String DATABASE_NAME = "wordlist";
-    private static final String KEY_ID = "_id";
-    private static final String KEY_WORD = "word";
+    public static final int DATABASE_VERSION = 1;
+    public static final String WORD_LIST_TABLE = "word_entries";
+    public static final String DATABASE_NAME = "wordlist";
+    public static final String KEY_ID = "_id";
+    public static final String KEY_WORD = "word";
     private static final String[] COLUMNS = {KEY_ID, KEY_WORD};
     private static final String WORD_LIST_TABLE_CREATE = "CREATE TABLE " +
             WORD_LIST_TABLE +
@@ -119,5 +119,21 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
             Log.e(TAG, "update: ", e);
         }
         return mNumberOfRowsUpdated;
+    }
+
+    public Cursor search(String word) {
+        String[] columns = new String[]{KEY_WORD};
+        String searchString = "%" + word + "%";
+        String where = KEY_WORD + " LIKE ?";
+        String[] whereArgs = new String[]{searchString};
+        Cursor cursor = null;
+        try {
+            if (mReadableDB == null)
+                mReadableDB = getReadableDatabase();
+            cursor = mReadableDB.query(WORD_LIST_TABLE, columns, where, whereArgs, null, null, null);
+        } catch (Exception e) {
+            Log.e(TAG, "search: ", e);
+        }
+        return cursor;
     }
 }

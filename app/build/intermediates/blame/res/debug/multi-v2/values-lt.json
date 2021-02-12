@@ -4,6 +4,23 @@
             "outputFile": "/Users/hystrix/Downloads/WordListSql-Starter/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-lt/values-lt.xml",
             "map": [
                 {
+                    "source": "/Users/hystrix/.gradle/caches/transforms-2/files-2.1/fdd42d596c4f70d37e38036f9f6b5091/wear-1.0.0/res/values-lt/values-lt.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,167",
+                        "endColumns": "111,115",
+                        "endOffsets": "162,278"
+                    },
+                    "to": {
+                        "startLines": "31,32",
+                        "startColumns": "4,4",
+                        "startOffsets": "3079,3191",
+                        "endColumns": "111,115",
+                        "endOffsets": "3186,3302"
+                    }
+                },
+                {
                     "source": "/Users/hystrix/.gradle/caches/transforms-2/files-2.1/6d11613c3b6a00a9ea456b5609ec43f7/core-1.0.0/res/values-lt/values-lt.xml",
                     "from": {
                         "startLines": "2",

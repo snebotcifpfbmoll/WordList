@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/hystrix/Downloads/WordListSql-Starter/app/build/intermediates/res/merged/debug/menu_main_menu.xml.flat",
+        "source": "/Users/hystrix/Downloads/WordListSql-Starter/app/src/main/res/menu/main_menu.xml"
+    },
+    {
         "merged": "/Users/hystrix/Downloads/WordListSql-Starter/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/Users/hystrix/Downloads/WordListSql-Starter/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
@@ -34,5 +38,9 @@
     {
         "merged": "/Users/hystrix/Downloads/WordListSql-Starter/app/build/intermediates/res/merged/debug/drawable_ic_add_24dp.xml.flat",
         "source": "/Users/hystrix/Downloads/WordListSql-Starter/app/src/main/res/drawable/ic_add_24dp.xml"
+    },
+    {
+        "merged": "/Users/hystrix/Downloads/WordListSql-Starter/app/build/intermediates/res/merged/debug/layout_activity_search.xml.flat",
+        "source": "/Users/hystrix/Downloads/WordListSql-Starter/app/src/main/res/layout/activity_search.xml"
     }
 ]
