@@ -75,6 +75,12 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
         }
     }
 
+    public long count() {
+        if (mReadableDB == null)
+            mReadableDB = getReadableDatabase();
+        return DatabaseUtils.queryNumEntries(mReadableDB, WORD_LIST_TABLE);
+    }
+
     public long insert(String word) {
         long newId = 0;
         ContentValues values = new ContentValues();
@@ -89,9 +95,15 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
         return newId;
     }
 
-    public long count() {
-        if (mReadableDB == null)
-            mReadableDB = getReadableDatabase();
-        return DatabaseUtils.queryNumEntries(mReadableDB, WORD_LIST_TABLE);
+    public int delete(int id) {
+        int deleted = 0;
+        try {
+            if (mWritableDB == null)
+                mWritableDB = getWritableDatabase();
+            mWritableDB.delete(WORD_LIST_TABLE, KEY_ID + " = ? ", new String[]{String.valueOf(id)});
+        } catch (Exception e) {
+            Log.e(TAG, "delete: ", e);
+        }
+        return deleted;
     }
 }
