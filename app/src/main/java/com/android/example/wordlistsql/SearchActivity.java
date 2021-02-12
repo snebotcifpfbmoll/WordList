@@ -26,7 +26,7 @@ public class SearchActivity extends AppCompatActivity {
 
     public void showResult(View view) {
         String word = String.valueOf(mEditWordView.getText());
-        mTextView.setText("Search term: " + word);
+        mTextView.setText("Search term: " + word + "\n");
         Cursor cursor = mDB.search(word);
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
