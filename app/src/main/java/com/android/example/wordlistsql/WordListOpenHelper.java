@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -72,5 +73,25 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
                 cursor.close();
             return entry;
         }
+    }
+
+    public long insert(String word) {
+        long newId = 0;
+        ContentValues values = new ContentValues();
+        values.put(KEY_WORD, word);
+        try {
+            if (mWritableDB == null)
+                mWritableDB = getWritableDatabase();
+            newId = mWritableDB.insert(WORD_LIST_TABLE, null, values);
+        } catch (Exception e) {
+            Log.e(TAG, "insert: ", e);
+        }
+        return newId;
+    }
+
+    public long count() {
+        if (mReadableDB == null)
+            mReadableDB = getReadableDatabase();
+        return DatabaseUtils.queryNumEntries(mReadableDB, WORD_LIST_TABLE);
     }
 }

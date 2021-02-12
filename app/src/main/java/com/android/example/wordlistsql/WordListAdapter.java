@@ -77,6 +77,6 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     @Override
     public int getItemCount() {
         // Placeholder so we can see some mock data.
-        return 10;
+        return (int) mDB.count();
     }
 }

@@ -22,7 +22,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * Implements a RecyclerView that displays a list of words from a SQL database.
@@ -72,5 +75,19 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // Add code to update the database.
+        if (requestCode == WORD_EDIT) {
+            if (resultCode == RESULT_OK) {
+                String word = data.getStringExtra(EditWordActivity.EXTRA_REPLY);
+                if (!TextUtils.isEmpty(word)) {
+                    int id = data.getIntExtra(WordListAdapter.EXTRA_ID, -99);
+                    if (id == WORD_ADD) {
+                        mDB.insert(word);
+                        mAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.empty_not_saved, Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 }
