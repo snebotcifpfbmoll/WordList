@@ -46,7 +46,7 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
     }
 
     public void fillDatabaseWithData(SQLiteDatabase db) {
-        String[] words = {"Android", "Adapter", "ListView", "AsyncTask", "Android Studio", "SQLiteDatabase", "SQLOpenHelper", "Data model", "ViewHolder", "Android Performance", "OnClickListener" };
+        String[] words = {"Android", "Adapter", "ListView", "AsyncTask", "Android Studio", "SQLiteDatabase", "SQLOpenHelper", "Data model", "ViewHolder", "Android Performance", "OnClickListener"};
         ContentValues values = new ContentValues();
         for (int i = 0; i < words.length; i++) {
             values.put(KEY_WORD, words[i]);
@@ -100,10 +100,24 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
         try {
             if (mWritableDB == null)
                 mWritableDB = getWritableDatabase();
-            mWritableDB.delete(WORD_LIST_TABLE, KEY_ID + " = ? ", new String[]{String.valueOf(id)});
+            deleted = mWritableDB.delete(WORD_LIST_TABLE, KEY_ID + " = ? ", new String[]{String.valueOf(id)});
         } catch (Exception e) {
             Log.e(TAG, "delete: ", e);
         }
         return deleted;
+    }
+
+    public int update(int id, String word) {
+        int mNumberOfRowsUpdated = -1;
+        ContentValues values = new ContentValues();
+        values.put(KEY_WORD, word);
+        try {
+            if (mWritableDB == null)
+                mWritableDB = getWritableDatabase();
+            mNumberOfRowsUpdated = mWritableDB.update(WORD_LIST_TABLE, values, KEY_ID + " = ?", new String[]{String.valueOf(id)});
+        } catch (Exception e) {
+            Log.e(TAG, "update: ", e);
+        }
+        return mNumberOfRowsUpdated;
     }
 }

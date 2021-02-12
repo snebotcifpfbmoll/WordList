@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                     if (id == WORD_ADD) {
                         mDB.insert(word);
                         mAdapter.notifyDataSetChanged();
+                    } else if (id >= 0) {
+                        mDB.update(id, word);
+                        mAdapter.notifyDataSetChanged();
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.empty_not_saved, Toast.LENGTH_LONG).show();

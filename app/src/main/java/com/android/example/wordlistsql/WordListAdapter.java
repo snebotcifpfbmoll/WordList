@@ -16,7 +16,9 @@
 
 package com.android.example.wordlistsql;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +53,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     public static final String EXTRA_ID = "ID";
     public static final String EXTRA_WORD = "WORD";
+    public static final String EXTRA_POSITION = "POSITION";
 
     private final LayoutInflater mInflater;
     Context mContext;
@@ -69,9 +72,19 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     }
 
     @Override
-    public void onBindViewHolder(WordViewHolder holder, int position) {
+    public void onBindViewHolder(final WordViewHolder holder, int position) {
         WordItem current = mDB.query(position);
         holder.wordItemView.setText(current.getWord());
+        holder.edit_button.setOnClickListener(new MyButtonOnClickListener(current.getId(), current.getWord()) {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, EditWordActivity.class);
+                intent.putExtra(EXTRA_ID, id);
+                intent.putExtra(EXTRA_POSITION, holder.getAdapterPosition());
+                intent.putExtra(EXTRA_WORD, word);
+                ((Activity) mContext).startActivityForResult(intent, MainActivity.WORD_EDIT);
+            }
+        });
     }
 
     @Override
