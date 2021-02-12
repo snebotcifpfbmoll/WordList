@@ -75,6 +75,13 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     public void onBindViewHolder(final WordViewHolder holder, int position) {
         WordItem current = mDB.query(position);
         holder.wordItemView.setText(current.getWord());
+        holder.delete_button.setOnClickListener(new MyButtonOnClickListener(current.getId(), current.getWord()) {
+            @Override
+            public void onClick(View v) {
+                mDB.delete(id);
+                notifyDataSetChanged();
+            }
+        });
         holder.edit_button.setOnClickListener(new MyButtonOnClickListener(current.getId(), current.getWord()) {
             @Override
             public void onClick(View v) {
