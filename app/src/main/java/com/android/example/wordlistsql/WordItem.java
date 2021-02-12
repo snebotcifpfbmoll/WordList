@@ -2,21 +2,21 @@ package com.android.example.wordlistsql;
 
 public class WordItem {
     private int mId;
-    private int mWord;
+    private String mWord;
 
-    public int getmId() {
+    public int getId() {
         return mId;
     }
 
-    public void setmId(int mId) {
+    public void setId(int mId) {
         this.mId = mId;
     }
 
-    public int getmWord() {
+    public String getWord() {
         return mWord;
     }
 
-    public void setmWord(int mWord) {
+    public void setWord(String mWord) {
         this.mWord = mWord;
     }
 

@@ -1,9 +1,12 @@
 package com.android.example.wordlistsql;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class WordListOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = WordListOpenHelper.class.getSimpleName();
@@ -36,6 +39,9 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.w(TAG, "onUpgrade: Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data.");
+        db.execSQL("DROP TABLE IF EXISTS " + WORD_LIST_TABLE);
+        onCreate(db);
     }
 
     public void fillDatabaseWithData(SQLiteDatabase db) {
@@ -44,6 +50,27 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
         for (int i = 0; i < words.length; i++) {
             values.put(KEY_WORD, words[i]);
             db.insert(WORD_LIST_TABLE, null, values);
+        }
+    }
+
+    @SuppressLint("Recycle")
+    public WordItem query(int position) {
+        String query = "SELECT * FROM" + WORD_LIST_TABLE + " ORDER BY " + KEY_WORD + " ASC " + "LIMIT " + position + ",1";
+        Cursor cursor = null;
+        WordItem entry = new WordItem();
+        try {
+            if (mReadableDB == null)
+                mReadableDB = getReadableDatabase();
+            cursor = mReadableDB.rawQuery(query, null);
+            cursor.moveToFirst();
+            entry.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+            entry.setWord(cursor.getString(cursor.getColumnIndex(KEY_WORD)));
+        } catch (Exception e) {
+            Log.e(TAG, "query: ", e);
+        } finally {
+            if (cursor != null)
+                cursor.close();
+            return entry;
         }
     }
 }
